@@ -19,7 +19,9 @@ class ViewController: UIViewController {
 
     
     @IBAction func tapOnButton(_ sender: Any) {
-        sharedObj.send("Hello World! mobile \n when ")
+        sharedObj.send("from ios") { outPutString in
+            print("Message: \(outPutString)")
+        }
     }
 }
 

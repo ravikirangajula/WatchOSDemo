@@ -1,60 +1,35 @@
 //
-//  ContentView.swift
-//  LFWatchAppTarget Watch App
+//  LFHealthKitManager.swift
+//  LFWatchAppTargetWatchApp
 //
-//  Created by Ravikiran Gajula on 14/2/23.
+//  Created by Ravikiran Gajula on 21/2/23.
 //
-import SwiftUI
+
+import UIKit
 import HealthKit
 import WatchConnectivity
 
-struct ContentView: View {
-    let sharedObj = WatchConnectManager.shared
+class LFHealthKitManager: NSObject {
     private var healthStore = HKHealthStore()
-    let heartRateQuantity = HKUnit(from: "count/min")
-    
-    @State private var value = 0
-    
-    var body: some View {
-        VStack{
-            HStack{
-                Button("❤️") {
-                    sharedObj.send("\(Int(value))") { outPutString in
-                        print("\(outPutString)")
-                    }
-                }.font(.system(size: 50))
-                Spacer()
-            }
-            
-            HStack{
-                Text("\(value)")
-                    .fontWeight(.regular)
-                    .font(.system(size: 70))
-                Text("BPM")
-                    .font(.headline)
-                    .fontWeight(.bold)
-                    .foregroundColor(Color.red)
-                    .padding(.bottom, 28.0)
-                
-                Spacer()
-                
-            }
+    private let heartRateQuantity = HKUnit(from: "count/min")
+    private let sharedObj = WatchConnectManager.shared
+    var getHeartRateBPM: ((_ rateValue: Int) -> Void)?
 
-        }
-        .padding()
-        .onAppear(perform: start)
+    override init() {
+        super.init()
     }
+}
 
+extension LFHealthKitManager {
     
-    func start() {
-        autorizeHealthKit()
+    func startHealthKit() {
+        self.autorizeHealthKit()
         startHeartRateQuery(quantityTypeIdentifier: .heartRate)
     }
     
     func autorizeHealthKit() {
         let healthKitTypes: Set = [
         HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!]
-
         healthStore.requestAuthorization(toShare: healthKitTypes, read: healthKitTypes) { _, _ in }
     }
     
@@ -77,32 +52,21 @@ struct ContentView: View {
         
         // 4
         let query = HKAnchoredObjectQuery(type: HKObjectType.quantityType(forIdentifier: quantityTypeIdentifier)!, predicate: devicePredicate, anchor: nil, limit: HKObjectQueryNoLimit, resultsHandler: updateHandler)
-        
         query.updateHandler = updateHandler
         
         // 5
-        
         healthStore.execute(query)
     }
     
     private func process(_ samples: [HKQuantitySample], type: HKQuantityTypeIdentifier) {
         var lastHeartRate = 0.0
-        
         for sample in samples {
             if type == .heartRate {
                 lastHeartRate = sample.quantity.doubleValue(for: heartRateQuantity)
             }
-            self.value = Int(lastHeartRate)
             sharedObj.send("\(Int(lastHeartRate))") { outPutString in
-                print("\(outPutString) \(outPutString)")
             }
-
+            getHeartRateBPM?(Int(lastHeartRate))
         }
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
     }
 }
