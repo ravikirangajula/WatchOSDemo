@@ -4,7 +4,7 @@
 //
 //  Created by Ravikiran Gajula on 14/2/23.
 //
-import SwiftUI
+/*import SwiftUI
 import HealthKit
 import WatchConnectivity
 
@@ -105,4 +105,52 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
+}*/
+
+import SwiftUI
+import HealthKit
+
+struct ContentView: View {
+    let healthKitObject = LFHealthKitManager()
+    let sharedObj = WatchConnectManager.shared
+    @State private var value = 0
+    
+    var body: some View {
+        VStack{
+            HStack{
+                Text("❤️")
+                    .font(.system(size: 50))
+                Spacer()
+            }
+            
+            HStack{
+                Text("\(value)")
+                    .fontWeight(.regular)
+                    .font(.system(size: 70))
+                
+                Text("LFBPM")
+                    .font(.headline)
+                    .fontWeight(.bold)
+                    .foregroundColor(Color.red)
+                    .padding(.bottom, 28.0)
+                
+                Spacer()
+                
+            }
+
+        }
+        .padding()
+        .onAppear(perform: start)
+    }
+
+    
+    func start() {
+        healthKitObject.startHealthKit()
+        healthKitObject.getHeartRateBPM = { bpmValue in
+            DispatchQueue.main.async {
+                value = bpmValue
+            }
+        }
+    }
+
 }
