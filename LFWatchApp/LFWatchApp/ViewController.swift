@@ -17,11 +17,14 @@ class ViewController: UIViewController {
         super.viewDidLoad()
     }
 
-    
-    @IBAction func tapOnButton(_ sender: Any) {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         sharedObj.handler = { [weak self] obj in
             self?.titleLabel.text = obj
         }
+    }
+    
+    @IBAction func tapOnButton(_ sender: Any) {
         sharedObj.send("iOS App") { [weak self] outPutString in
             DispatchQueue.main.async {
                 self?.titleLabel.text = outPutString

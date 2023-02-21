@@ -114,12 +114,15 @@ struct ContentView: View {
     let healthKitObject = LFHealthKitManager()
     let sharedObj = WatchConnectManager.shared
     @State private var value = 0
-    
+    @State private var errorStatus = ""
     var body: some View {
         VStack{
             HStack{
-                Text("❤️")
-                    .font(.system(size: 50))
+                Button("❤️") {
+                    sharedObj.send("\(Int(value))") { outPutString in
+                        errorStatus = outPutString ?? "Na1"
+                    }
+                }.font(.system(size: 50))
                 Spacer()
             }
             
@@ -133,10 +136,12 @@ struct ContentView: View {
                     .fontWeight(.bold)
                     .foregroundColor(Color.red)
                     .padding(.bottom, 28.0)
-                
                 Spacer()
                 
             }
+            Text("\(errorStatus)")
+                .fontWeight(.regular)
+                .font(.system(size: 8))
 
         }
         .padding()
