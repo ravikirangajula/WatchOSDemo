@@ -170,13 +170,14 @@ struct ContentView: View {
     
     func start() {
         healthKitObject.startHealthKit()
-         callBacks()
+        callBacks()
         //testingMethod()
     }
 
     func callBacks() {
         healthKitObject.getHeartRateBPM = { bpmValue in
             DispatchQueue.main.async {
+                print("vale == \(bpmValue)")
                 value = bpmValue
                 errorStatus = ""
                 sharedObj.send("\(Int(value))") { outPutString in
