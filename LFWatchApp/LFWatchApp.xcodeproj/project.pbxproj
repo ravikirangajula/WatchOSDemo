@@ -67,6 +67,7 @@
 		DA8D4887299A9E9300CBF51C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DA8D4889299A9E9400CBF51C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA8D488C299A9E9400CBF51C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		DAC1A89E29A5BBAD00857394 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DAD355DB299BF270003A46BA /* WatchConnectManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,6 +135,7 @@
 		DA8D4884299A9E9300CBF51C /* LFWatchAppTargetWatchApp */ = {
 			isa = PBXGroup;
 			children = (
+				DAC1A89E29A5BBAD00857394 /* Info.plist */,
 				DA33D84229A5127000E9228D /* LFWatchAppTargetWatchApp.entitlements */,
 				DA33D84529A5136C00E9228D /* HealthKitManager.swift */,
 				DA33D84629A5136C00E9228D /* LFHealthKitManager.swift */,
@@ -490,7 +492,8 @@
 				DEVELOPMENT_TEAM = 336NRSY4R2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = LFWatchAppTarget;
+				INFOPLIST_FILE = LFWatchAppTargetWatchApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = LFConnect;
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "we use hear rate for Reaserch purpose";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "we use hear rate for Reaserch purpose";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
@@ -526,7 +529,8 @@
 				DEVELOPMENT_TEAM = 336NRSY4R2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = LFWatchAppTarget;
+				INFOPLIST_FILE = LFWatchAppTargetWatchApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = LFConnect;
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "we use hear rate for Reaserch purpose";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "we use hear rate for Reaserch purpose";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";

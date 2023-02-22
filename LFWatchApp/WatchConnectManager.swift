@@ -57,7 +57,7 @@ final class WatchConnectManager: NSObject {
          
          WCSession.default.sendMessage([kMessageKey : message], replyHandler: nil) { error in
              print("Cannot send message: \(String(describing: error))")
-             completion(error.localizedDescription)
+             completion("ERR:\(error.localizedDescription)")
          }
      }
 }

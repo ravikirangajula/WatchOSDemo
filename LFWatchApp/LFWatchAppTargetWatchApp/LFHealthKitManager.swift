@@ -14,6 +14,8 @@ class LFHealthKitManager: NSObject {
     private let heartRateQuantity = HKUnit(from: "count/min")
     private let sharedObj = WatchConnectManager.shared
     var getHeartRateBPM: ((_ rateValue: Int) -> Void)?
+    var updateError: ((_ errorMsg: String?) -> Void)?
+    var session : HKWorkoutSession?
 
     override init() {
         super.init()
@@ -25,12 +27,25 @@ extension LFHealthKitManager {
     func startHealthKit() {
         self.autorizeHealthKit()
         startHeartRateQuery(quantityTypeIdentifier: .heartRate)
+        setUpBackgroundDeliveryForDataTypes()
     }
     
     func autorizeHealthKit() {
         let healthKitTypes: Set = [
         HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!]
         healthStore.requestAuthorization(toShare: healthKitTypes, read: healthKitTypes) { _, _ in }
+    }
+    
+    private func setUpBackgroundDeliveryForDataTypes() {
+    let sampleType = HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!
+        let query = HKObserverQuery(sampleType: sampleType, predicate: nil) { query, completion, erroObhes in
+            print("\(query)")
+        }
+        healthStore.execute(query)
+        
+        healthStore.enableBackgroundDelivery(for: HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!, frequency: .immediate) { success, error in
+            print("\(error)")
+        }
     }
     
     private func startHeartRateQuery(quantityTypeIdentifier: HKQuantityTypeIdentifier) {
@@ -64,8 +79,9 @@ extension LFHealthKitManager {
             if type == .heartRate {
                 lastHeartRate = sample.quantity.doubleValue(for: heartRateQuantity)
             }
-            sharedObj.send("\(Int(lastHeartRate))") { outPutString in
-            }
+//            sharedObj.send("\(Int(lastHeartRate))") { [weak self] outPutString in
+//                self?.updateError?(outPutString)
+//            }
             getHeartRateBPM?(Int(lastHeartRate))
         }
     }

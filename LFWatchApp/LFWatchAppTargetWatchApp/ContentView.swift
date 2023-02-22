@@ -113,14 +113,31 @@ import HealthKit
 struct ContentView: View {
     let healthKitObject = LFHealthKitManager()
     let sharedObj = WatchConnectManager.shared
-    @State private var value = 0
+    @State private var value = 0 {
+        didSet {
+            sharedObj.send("\(Int(value))") { outPutString in
+                if let error = outPutString, error.contains("ERR:") {
+                    errorStatus = error
+                } else {
+                    errorStatus = "connection err: \(outPutString ?? "CE")"
+                }
+            }
+        }
+    }
     @State private var errorStatus = ""
+    @State private var iosString = ""
+
     var body: some View {
         VStack{
             HStack{
+                Text("\(iosString)")
                 Button("❤️") {
                     sharedObj.send("\(Int(value))") { outPutString in
-                        errorStatus = outPutString ?? "Na1"
+                        if let error = outPutString, error.contains("ERR:") {
+                            errorStatus = error
+                        } else {
+                            errorStatus = "connection err: \(outPutString ?? "CE")"
+                        }
                     }
                 }.font(.system(size: 50))
                 Spacer()
@@ -145,17 +162,52 @@ struct ContentView: View {
 
         }
         .padding()
-        .onAppear(perform: start)
+        .onAppear {
+            start()
+        }
     }
 
     
     func start() {
         healthKitObject.startHealthKit()
+         callBacks()
+        //testingMethod()
+    }
+
+    func callBacks() {
         healthKitObject.getHeartRateBPM = { bpmValue in
             DispatchQueue.main.async {
                 value = bpmValue
+                errorStatus = ""
+                sharedObj.send("\(Int(value))") { outPutString in
+                    if let error = outPutString, error.contains("ERR:") {
+                        errorStatus = error
+                    } else {
+                        errorStatus = "connection err: \(outPutString ?? "CE")"
+                    }
+                }
             }
         }
+        
+        sharedObj.handler = { s in
+            self.iosString = s
+        }
+        
+        healthKitObject.updateError = { errorValue in
+            DispatchQueue.main.async {
+                errorStatus = errorValue ?? ""
+            }
+        }
+        
     }
+    
+    
+    func testingMethod() {
+        Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true) { timeObejct in
+            DispatchQueue.main.async {
+                value = (50...100).randomElement()!
+            }
+        }
 
+    }
 }

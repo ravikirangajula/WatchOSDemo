@@ -11,10 +11,11 @@ import WatchConnectivity
 class ViewController: UIViewController {
 
     @IBOutlet weak var titleLabel: UILabel!
-    let sharedObj = WatchConnectManager.shared
+    var sharedObj = WatchConnectManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        sharedObj = WatchConnectManager.shared
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -25,7 +26,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func tapOnButton(_ sender: Any) {
-        sharedObj.send("iOS App") { [weak self] outPutString in
+        sharedObj.send("from ios App") { [weak self] outPutString in
             DispatchQueue.main.async {
                 self?.titleLabel.text = outPutString
             }
