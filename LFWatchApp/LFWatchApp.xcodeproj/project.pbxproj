@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		DA33D84429A5128200E9228D /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA33D84329A5128200E9228D /* HealthKit.framework */; };
 		DA33D84729A5136C00E9228D /* LFHealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA33D84629A5136C00E9228D /* LFHealthKitManager.swift */; };
-		DA33D84829A5136C00E9228D /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA33D84529A5136C00E9228D /* HealthKitManager.swift */; };
 		DA83FFE1299D203B0009A639 /* LFWatchAppTargetWatchApp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = DA8D4883299A9E9300CBF51C /* LFWatchAppTargetWatchApp.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		DA8D486C299A9E6B00CBF51C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D486B299A9E6B00CBF51C /* AppDelegate.swift */; };
 		DA8D486E299A9E6B00CBF51C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D486D299A9E6B00CBF51C /* SceneDelegate.swift */; };
@@ -68,6 +67,7 @@
 		DA8D4889299A9E9400CBF51C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA8D488C299A9E9400CBF51C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DAC1A89E29A5BBAD00857394 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		DAC1A89F29A6177500857394 /* LFWatchApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LFWatchApp.entitlements; sourceTree = "<group>"; };
 		DAD355DB299BF270003A46BA /* WatchConnectManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -121,6 +121,7 @@
 		DA8D486A299A9E6B00CBF51C /* LFWatchApp */ = {
 			isa = PBXGroup;
 			children = (
+				DAC1A89F29A6177500857394 /* LFWatchApp.entitlements */,
 				DA8D486B299A9E6B00CBF51C /* AppDelegate.swift */,
 				DA8D486D299A9E6B00CBF51C /* SceneDelegate.swift */,
 				DA8D486F299A9E6B00CBF51C /* ViewController.swift */,
@@ -272,7 +273,6 @@
 				DAD355DD299BF270003A46BA /* WatchConnectManager.swift in Sources */,
 				DA8D4888299A9E9300CBF51C /* ContentView.swift in Sources */,
 				DA33D84729A5136C00E9228D /* LFHealthKitManager.swift in Sources */,
-				DA33D84829A5136C00E9228D /* HealthKitManager.swift in Sources */,
 				DA8D4886299A9E9300CBF51C /* LFWatchAppTargetApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -428,6 +428,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LFWatchApp/LFWatchApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 336NRSY4R2;
@@ -456,6 +457,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LFWatchApp/LFWatchApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 336NRSY4R2;

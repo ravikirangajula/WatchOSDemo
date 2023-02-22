@@ -20,17 +20,30 @@ class ViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        sharedObj.handler = { [weak self] obj in
-            self?.titleLabel.text = obj
+        sharedObj.didReceiveMessageFromWCManager = { [weak self] obj in
+            self?.titleLabel.text = "Heart rate: \(obj)"
         }
     }
     
     @IBAction func tapOnButton(_ sender: Any) {
-        sharedObj.send("START WO") { [weak self] outPutString in
+        //sharedObj.openWatchOSApp()
+      //  DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {[weak self] in
+            self.sharedObj.send("START WO") { [weak self] outPutString in
+                DispatchQueue.main.async {
+                    self?.titleLabel.text = outPutString
+                }
+            }
+       // }
+    }
+
+    @IBAction func endWorkout(_ sender: Any) {
+        self.sharedObj.send("END WO") { [weak self] outPutString in
             DispatchQueue.main.async {
                 self?.titleLabel.text = outPutString
             }
         }
+
+        
     }
 }
 

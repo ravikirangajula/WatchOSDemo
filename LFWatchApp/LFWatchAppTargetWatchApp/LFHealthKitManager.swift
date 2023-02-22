@@ -10,6 +10,7 @@ import HealthKit
 import WatchConnectivity
 
 class LFHealthKitManager: NSObject, ObservableObject {
+    
     private var healthStore = HKHealthStore()
     private let heartRateQuantity = HKUnit(from: "count/min")
     private let sharedObj = WatchConnectManager.shared
@@ -17,6 +18,7 @@ class LFHealthKitManager: NSObject, ObservableObject {
     var updateError: ((_ errorMsg: String?) -> Void)?
     var session: HKWorkoutSession?
     var builder: HKLiveWorkoutBuilder?
+    
     var selectedWorkout: HKWorkoutActivityType? {
         didSet {
             guard let selectedWorkout = selectedWorkout else { return }
@@ -38,11 +40,8 @@ class LFHealthKitManager: NSObject, ObservableObject {
     // MARK: - Workout Metrics
     @Published var averageHeartRate: Double = 0
     @Published var heartRate: Double = 0
-    @Published var activeEnergy: Double = 0
-    @Published var distance: Double = 0
     @Published var workout: HKWorkout?
 
-    
     override init() {
         super.init()
     }
@@ -62,26 +61,29 @@ extension LFHealthKitManager {
             HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!
         ]
         
-//        let typesToShare: Set = [
-//            HKQuantityType.workoutType()
-//        ]
-//
-//        // The quantity types to read from the health store.
-//        let typesToRead: Set = [
-//            HKQuantityType.quantityType(forIdentifier: .heartRate)!,
-//            HKQuantityType.quantityType(forIdentifier: .walkingHeartRateAverage)!,
-//            HKObjectType.activitySummaryType()
-//        ]
-        healthStore.requestAuthorization(toShare: healthKitTypes, read: healthKitTypes) { _, _ in }
+        let typesToShare: Set = [
+            HKQuantityType.workoutType()
+        ]
+
+        // The quantity types to read from the health store.
+        let typesToRead: Set = [
+            HKQuantityType.quantityType(forIdentifier: .heartRate)!,
+            HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!,
+            HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning)!,
+            HKQuantityType.quantityType(forIdentifier: .distanceCycling)!,
+            HKObjectType.activitySummaryType()
+        ]
+
+        healthStore.requestAuthorization(toShare: typesToShare, read: typesToRead) { _, _ in }
     }
     
     private func setUpBackgroundDeliveryForDataTypes() {
+        
         let sampleType = HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!
         let query = HKObserverQuery(sampleType: sampleType, predicate: nil) { query, completion, erroObhes in
             print("\(query)")
         }
         healthStore.execute(query)
-        
         healthStore.enableBackgroundDelivery(for: HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!, frequency: .immediate) { success, error in
             print("\(error)")
         }
@@ -188,8 +190,8 @@ extension LFHealthKitManager {
     }
     
     func updateForStatistics(_ statistics: HKStatistics?) {
+       
         guard let statistics = statistics else { return }
-
         DispatchQueue.main.async {
             switch statistics.quantityType {
             case HKQuantityType.quantityType(forIdentifier: .heartRate):
@@ -198,13 +200,10 @@ extension LFHealthKitManager {
                 self.averageHeartRate = statistics.averageQuantity()?.doubleValue(for: heartRateUnit) ?? 0
                 print("Heart rate from workout\(self.heartRate)")
                 print("AVG Heart rate from workout\(self.averageHeartRate)")
-
-            case HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned):
-                let energyUnit = HKUnit.kilocalorie()
-                self.activeEnergy = statistics.sumQuantity()?.doubleValue(for: energyUnit) ?? 0
-            case HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning), HKQuantityType.quantityType(forIdentifier: .distanceCycling):
-                let meterUnit = HKUnit.meter()
-                self.distance = statistics.sumQuantity()?.doubleValue(for: meterUnit) ?? 0
+                let value = self.heartRate.formatted(.number.precision(.fractionLength(0)))
+                self.sharedObj.send("\(value)") { [weak self] outPutString in
+                    self?.updateError?(outPutString)
+                }
             default:
                 return
             }
@@ -220,7 +219,6 @@ extension LFHealthKitManager: HKWorkoutSessionDelegate {
         DispatchQueue.main.async {
             self.running = toState == .running
         }
-
         // Wait for the session to transition states before ending the builder.
         if toState == .ended {
             builder?.endCollection(withEnd: date) { (success, error) in
@@ -243,18 +241,15 @@ extension LFHealthKitManager: HKLiveWorkoutBuilderDelegate {
     
     func workoutBuilderDidCollectEvent(_ workoutBuilder: HKLiveWorkoutBuilder) {
         print("workoutBuilder == \(workoutBuilder)")
-
     }
-
+    
     func workoutBuilder(_ workoutBuilder: HKLiveWorkoutBuilder, didCollectDataOf collectedTypes: Set<HKSampleType>) {
         for type in collectedTypes {
             guard let quantityType = type as? HKQuantityType else {
                 return // Nothing to do.
             }
-
             let statistics = workoutBuilder.statistics(for: quantityType)
             print("statistics == \(statistics)")
-
             // Update the published values.
             updateForStatistics(statistics)
         }

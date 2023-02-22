@@ -111,36 +111,22 @@ import SwiftUI
 import HealthKit
 
 struct ContentView: View {
+    
     let healthKitObject = LFHealthKitManager()
     let sharedObj = WatchConnectManager.shared
-
-    @State private var value = 0 {
-        didSet {
-            sharedObj.send("\(Int(value))") { outPutString in
-                if let error = outPutString, error.contains("ERR:") {
-                    errorStatus = error
-                } else {
-                    errorStatus = "connection err: \(outPutString ?? "CE")"
-                }
-            }
-        }
-    }
+    
+    @State private var value = 0
     @State private var errorStatus = ""
     @State private var iosString = ""
-
+    
     var body: some View {
         VStack{
             HStack{
                 Text("\(iosString)")
                 Text(healthKitObject.heartRate.formatted(.number.precision(.fractionLength(0))) + " bpm")
                 Button("❤️") {
-                    sharedObj.send("\(Int(value))") { outPutString in
-                        if let error = outPutString, error.contains("ERR:") {
-                            errorStatus = error
-                        } else {
-                            errorStatus = "connection err: \(outPutString ?? "CE")"
-                        }
-                    }
+                    healthKitObject.selectedWorkout = .walking
+                    //sendHeartToiOSApp()
                 }.font(.system(size: 50))
                 Spacer()
             }
@@ -161,52 +147,64 @@ struct ContentView: View {
             Text("\(errorStatus)")
                 .fontWeight(.regular)
                 .font(.system(size: 8))
-
+            
         }
         .padding()
         .onAppear {
             start()
         }
     }
+}
 
+extension ContentView {
     
     func start() {
         healthKitObject.startHealthKit()
-        callBacks()
-        //testingMethod()
+        healthKitCallBacks()
+        watchConnectionManagerCallBacks()
     }
-
-    func callBacks() {
+    
+    private func watchConnectionManagerCallBacks() {
+        
+        sharedObj.didReceiveMessageFromWCManager = { s in
+            self.iosString = s
+        }
+        
+        sharedObj.startWorkout = {
+            healthKitObject.selectedWorkout = .walking
+        }
+        
+        sharedObj.endWorkout = {
+            healthKitObject.endWorkout()
+        }
+    }
+    
+    func healthKitCallBacks() {
         healthKitObject.getHeartRateBPM = { bpmValue in
             DispatchQueue.main.async {
                 print("vale == \(bpmValue)")
                 value = bpmValue
                 errorStatus = ""
-                sharedObj.send("\(Int(value))") { outPutString in
-                    if let error = outPutString, error.contains("ERR:") {
-                        errorStatus = error
-                    } else {
-                        errorStatus = "connection err: \(outPutString ?? "CE")"
-                    }
-                }
+              //  sendHeartToiOSApp()
             }
         }
-        
-        sharedObj.handler = { s in
-            self.iosString = s
-        }
-        
+
         healthKitObject.updateError = { errorValue in
             DispatchQueue.main.async {
                 errorStatus = errorValue ?? ""
             }
         }
-        
-        sharedObj.startWorkout = {
-            healthKitObject.selectedWorkout = .running
-        }
     }
     
+    private func sendHeartToiOSApp() {
+        sharedObj.send("\(Int(value))") { outPutString in
+            if let error = outPutString, error.contains("ERR:") {
+                errorStatus = error
+            } else {
+                errorStatus = "connection err: \(outPutString ?? "CE")"
+            }
+        }
+    }
     
     func testingMethod() {
         Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true) { timeObejct in
@@ -214,10 +212,9 @@ struct ContentView: View {
                 value = (50...100).randomElement()!
             }
         }
-
     }
+    
 }
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView().environmentObject(LFHealthKitManager())
