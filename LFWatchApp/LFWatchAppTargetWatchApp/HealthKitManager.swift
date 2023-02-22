@@ -12,11 +12,9 @@ class HealthKitManager: NSObject {
    
     private var healthStore = HKHealthStore()
     let heartRateQuantity = HKUnit(from: "count/min")
-
     var heartRateValue = 0
     var getHeartRate: ((_ rateValue: String) -> Void)?
     var getHeartRateQueryObject: ((_ rateValue: HKSample) -> Void)?
-
     var heartRateQuery:HKSampleQuery?
     
     override init() {

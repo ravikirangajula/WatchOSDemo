@@ -26,7 +26,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func tapOnButton(_ sender: Any) {
-        sharedObj.send("from ios App") { [weak self] outPutString in
+        sharedObj.send("START WO") { [weak self] outPutString in
             DispatchQueue.main.async {
                 self?.titleLabel.text = outPutString
             }

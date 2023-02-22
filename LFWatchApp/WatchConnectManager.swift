@@ -7,7 +7,6 @@
 
 import Foundation
 import WatchConnectivity
-import HealthKit
 
 struct NotificationMessage: Identifiable {
     let id = UUID()
@@ -18,6 +17,8 @@ final class WatchConnectManager: NSObject {
     static let shared = WatchConnectManager()
     @Published var notificationMessage: NotificationMessage? = nil
     var handler: ((_ messageValue: String) -> Void)?
+    var startWorkout: (() -> Void)?
+
     private let kMessageKey = "message"
     var outPut = ""
     private override init() {
@@ -27,10 +28,6 @@ final class WatchConnectManager: NSObject {
               WCSession.default.activate()
           }
       }
-    
-    func sendObjMessage(obj: HKSample) {
-        print("Sample OBJ: \(obj)")
-    }
     
     func send(_ message: String, completion: @escaping(_ outPutString: String?) -> ()) {
          guard WCSession.default.activationState == .activated else {
@@ -67,8 +64,11 @@ extension WatchConnectManager: WCSessionDelegate {
         if let notificationText = message[kMessageKey] as? String {
             DispatchQueue.main.async { [weak self] in
                 print("HeartRate: \(message)")
-                self?.handler?(notificationText)
-               // self?.notificationMessage = NotificationMessage(text: notificationText)
+                if notificationText.uppercased() == "START WO".uppercased() {
+                    self?.startWorkout?()
+                } else {
+                    self?.handler?(notificationText)
+                }
             }
         }
     }

@@ -113,6 +113,7 @@ import HealthKit
 struct ContentView: View {
     let healthKitObject = LFHealthKitManager()
     let sharedObj = WatchConnectManager.shared
+
     @State private var value = 0 {
         didSet {
             sharedObj.send("\(Int(value))") { outPutString in
@@ -131,6 +132,7 @@ struct ContentView: View {
         VStack{
             HStack{
                 Text("\(iosString)")
+                Text(healthKitObject.heartRate.formatted(.number.precision(.fractionLength(0))) + " bpm")
                 Button("❤️") {
                     sharedObj.send("\(Int(value))") { outPutString in
                         if let error = outPutString, error.contains("ERR:") {
@@ -200,6 +202,9 @@ struct ContentView: View {
             }
         }
         
+        sharedObj.startWorkout = {
+            healthKitObject.selectedWorkout = .running
+        }
     }
     
     
@@ -210,5 +215,11 @@ struct ContentView: View {
             }
         }
 
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView().environmentObject(LFHealthKitManager())
     }
 }
