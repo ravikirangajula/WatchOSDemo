@@ -66,7 +66,7 @@ extension LFHealthKitManager {
             HKQuantityType.quantityType(forIdentifier: .heartRate)!,
             HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!,
             HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning)!,
-            HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!,
+            HKQuantityType.quantityType(forIdentifier: .distanceCycling)!,
             HKObjectType.activitySummaryType()
         ]
 
@@ -201,7 +201,6 @@ extension LFHealthKitManager {
                     self?.updateError?(outPutString)
                 }
                 self.getHeartRateBPM?(Int(value) ?? 0)
-            case HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned):
                 
             default:
                 return
