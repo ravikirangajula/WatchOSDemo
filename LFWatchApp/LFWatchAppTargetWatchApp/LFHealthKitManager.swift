@@ -42,10 +42,6 @@ class LFHealthKitManager: NSObject, ObservableObject {
     @Published var heartRate: Double = 0
     @Published var workout: HKWorkout?
 
-    override init() {
-        super.init()
-    }
-    
 }
 
 extension LFHealthKitManager {
@@ -70,7 +66,7 @@ extension LFHealthKitManager {
             HKQuantityType.quantityType(forIdentifier: .heartRate)!,
             HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!,
             HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning)!,
-            HKQuantityType.quantityType(forIdentifier: .distanceCycling)!,
+            HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!,
             HKObjectType.activitySummaryType()
         ]
 
@@ -123,7 +119,7 @@ extension LFHealthKitManager {
 //            sharedObj.send("\(Int(lastHeartRate))") { [weak self] outPutString in
 //                self?.updateError?(outPutString)
 //            }
-            getHeartRateBPM?(Int(lastHeartRate))
+         //   getHeartRateBPM?(Int(lastHeartRate))
         }
     }
 }
@@ -204,6 +200,9 @@ extension LFHealthKitManager {
                 self.sharedObj.send("\(value)") { [weak self] outPutString in
                     self?.updateError?(outPutString)
                 }
+                self.getHeartRateBPM?(Int(value) ?? 0)
+            case HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned):
+                
             default:
                 return
             }

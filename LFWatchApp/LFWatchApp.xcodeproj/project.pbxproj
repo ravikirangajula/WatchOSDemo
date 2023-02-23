@@ -51,7 +51,6 @@
 /* Begin PBXFileReference section */
 		DA33D84229A5127000E9228D /* LFWatchAppTargetWatchApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LFWatchAppTargetWatchApp.entitlements; sourceTree = "<group>"; };
 		DA33D84329A5128200E9228D /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS9.1.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
-		DA33D84529A5136C00E9228D /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
 		DA33D84629A5136C00E9228D /* LFHealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFHealthKitManager.swift; sourceTree = "<group>"; };
 		DA8D4868299A9E6B00CBF51C /* LFWatchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LFWatchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA8D486B299A9E6B00CBF51C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -138,7 +137,6 @@
 			children = (
 				DAC1A89E29A5BBAD00857394 /* Info.plist */,
 				DA33D84229A5127000E9228D /* LFWatchAppTargetWatchApp.entitlements */,
-				DA33D84529A5136C00E9228D /* HealthKitManager.swift */,
 				DA33D84629A5136C00E9228D /* LFHealthKitManager.swift */,
 				DA8D4885299A9E9300CBF51C /* LFWatchAppTargetApp.swift */,
 				DA8D4887299A9E9300CBF51C /* ContentView.swift */,

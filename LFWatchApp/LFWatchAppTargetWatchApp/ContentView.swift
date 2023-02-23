@@ -113,34 +113,40 @@ import HealthKit
 struct ContentView: View {
     
     let healthKitObject = LFHealthKitManager()
-    let sharedObj = WatchConnectManager.shared
+    let wcManagerObj = WatchConnectManager.shared
     
-    @State private var value = 0
+    @State private var value = 0 {
+        didSet {
+            print("healthKit = \(healthKitObject.heartRate)")
+        }
+    }
     @State private var errorStatus = ""
     @State private var iosString = ""
+    @State private var workoutState = ""
     
     var body: some View {
         VStack{
             HStack{
-                Text("\(iosString)")
-                Text(healthKitObject.heartRate.formatted(.number.precision(.fractionLength(0))) + " bpm")
-                Button("❤️") {
-                    healthKitObject.selectedWorkout = .walking
-                    //sendHeartToiOSApp()
-                }.font(.system(size: 50))
+                Text("\(workoutState)")
+               // Text("\(iosString)")
                 Spacer()
             }
-            
+            Spacer()
+
             HStack{
+                Text("❤️").font(.system(size: 50))
                 Text("\(value)")
                     .fontWeight(.regular)
-                    .font(.system(size: 70))
-                
-                Text("LFBPM")
+                    .font(.system(size: 30))
+                        .fontWeight(.regular)
+               // Spacer()
+//                Text(healthKitObject.heartRate.formatted(.number.precision(.fractionLength(0)))).font(.system(size: 50))
+              //  Spacer()
+                Text("BPM")
                     .font(.headline)
                     .fontWeight(.bold)
                     .foregroundColor(Color.red)
-                    .padding(.bottom, 28.0)
+                    .padding(.bottom, 20)
                 Spacer()
                 
             }
@@ -166,16 +172,18 @@ extension ContentView {
     
     private func watchConnectionManagerCallBacks() {
         
-        sharedObj.didReceiveMessageFromWCManager = { s in
+        wcManagerObj.didReceiveMessageFromWCManager = { s in
             self.iosString = s
         }
         
-        sharedObj.startWorkout = {
+        wcManagerObj.startWorkout = {
             healthKitObject.selectedWorkout = .walking
+            workoutState = "workout started"
         }
         
-        sharedObj.endWorkout = {
+        wcManagerObj.endWorkout = {
             healthKitObject.endWorkout()
+            workoutState = "workout ended"
         }
     }
     
@@ -183,6 +191,7 @@ extension ContentView {
         healthKitObject.getHeartRateBPM = { bpmValue in
             DispatchQueue.main.async {
                 print("vale == \(bpmValue)")
+                print("healthKitObject == \(healthKitObject.heartRate)")
                 value = bpmValue
                 errorStatus = ""
               //  sendHeartToiOSApp()
@@ -197,7 +206,7 @@ extension ContentView {
     }
     
     private func sendHeartToiOSApp() {
-        sharedObj.send("\(Int(value))") { outPutString in
+        wcManagerObj.send("\(Int(value))") { outPutString in
             if let error = outPutString, error.contains("ERR:") {
                 errorStatus = error
             } else {
@@ -215,6 +224,7 @@ extension ContentView {
     }
     
 }
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView().environmentObject(LFHealthKitManager())

@@ -26,14 +26,14 @@ class ViewController: UIViewController {
     }
     
     @IBAction func tapOnButton(_ sender: Any) {
-        //sharedObj.openWatchOSApp()
-      //  DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {[weak self] in
-            self.sharedObj.send("START WO") { [weak self] outPutString in
+           sharedObj.openWatchOSApp()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {[weak self] in
+            self?.sharedObj.send("START WO") { [weak self] outPutString in
                 DispatchQueue.main.async {
                     self?.titleLabel.text = outPutString
                 }
             }
-       // }
+        }
     }
 
     @IBAction func endWorkout(_ sender: Any) {
