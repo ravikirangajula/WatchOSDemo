@@ -126,9 +126,12 @@ struct ContentView: View {
     
     var body: some View {
         VStack{
+            Button("Status") {
+                iosString = healthKitObject.getAuthorizationStatus().description
+            }
             HStack{
                 Text("\(workoutState)")
-               // Text("\(iosString)")
+                Text("\(iosString)")
                 Spacer()
             }
             Spacer()
@@ -139,9 +142,6 @@ struct ContentView: View {
                     .fontWeight(.regular)
                     .font(.system(size: 30))
                         .fontWeight(.regular)
-               // Spacer()
-//                Text(healthKitObject.heartRate.formatted(.number.precision(.fractionLength(0)))).font(.system(size: 50))
-              //  Spacer()
                 Text("BPM")
                     .font(.headline)
                     .fontWeight(.bold)

@@ -53,12 +53,10 @@ extension LFHealthKitManager {
     }
     
     func autorizeHealthKit() {
-        let healthKitTypes: Set = [
-            HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!
-        ]
         
         let typesToShare: Set = [
-            HKQuantityType.workoutType()
+            HKQuantityType.workoutType(),
+            HKQuantityType.quantityType(forIdentifier: .heartRate)!
         ]
 
         // The quantity types to read from the health store.
@@ -251,5 +249,24 @@ extension LFHealthKitManager: HKLiveWorkoutBuilderDelegate {
             // Update the published values.
             updateForStatistics(statistics)
         }
+    }
+}
+
+extension LFHealthKitManager {
+    
+    func getAuthorizationStatus() -> String {
+        guard let stepQtyType = HKObjectType.quantityType(forIdentifier: .heartRate) else { return "false"}
+        let status = self.healthStore.authorizationStatus(for: stepQtyType)
+        switch status {
+        case .notDetermined:
+            return "notDetermined"
+        case .sharingDenied:
+            return "sharingDenied"
+        case .sharingAuthorized:
+            return "sharingAuthorized"
+        @unknown default:
+            return "default"
+        }
+
     }
 }
