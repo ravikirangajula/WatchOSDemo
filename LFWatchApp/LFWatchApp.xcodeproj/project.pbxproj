@@ -9,6 +9,15 @@
 /* Begin PBXBuildFile section */
 		DA33D84429A5128200E9228D /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA33D84329A5128200E9228D /* HealthKit.framework */; };
 		DA33D84729A5136C00E9228D /* LFHealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA33D84629A5136C00E9228D /* LFHealthKitManager.swift */; };
+		DA6228FC29C0CD5D00486619 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6228F129C0CD5D00486619 /* ComplicationController.swift */; };
+		DA6228FD29C0CFA800486619 /* WorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6228F329C0CD5D00486619 /* WorkoutManager.swift */; };
+		DA6228FE29C0CFAB00486619 /* MetricsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6228F529C0CD5D00486619 /* MetricsView.swift */; };
+		DA6228FF29C0CFAD00486619 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6228F629C0CD5D00486619 /* SummaryView.swift */; };
+		DA62290029C0CFAF00486619 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6228F729C0CD5D00486619 /* StartView.swift */; };
+		DA62290129C0CFB100486619 /* SessionPagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6228F829C0CD5D00486619 /* SessionPagingView.swift */; };
+		DA62290229C0CFB400486619 /* ControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6228F929C0CD5D00486619 /* ControlsView.swift */; };
+		DA62290329C0CFB600486619 /* ActivityRingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6228FA29C0CD5D00486619 /* ActivityRingsView.swift */; };
+		DA62290429C0CFB800486619 /* ElapsedTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6228FB29C0CD5D00486619 /* ElapsedTimeView.swift */; };
 		DA83FFE1299D203B0009A639 /* LFWatchAppTargetWatchApp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = DA8D4883299A9E9300CBF51C /* LFWatchAppTargetWatchApp.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		DA8D486C299A9E6B00CBF51C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D486B299A9E6B00CBF51C /* AppDelegate.swift */; };
 		DA8D486E299A9E6B00CBF51C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D486D299A9E6B00CBF51C /* SceneDelegate.swift */; };
@@ -52,6 +61,15 @@
 		DA33D84229A5127000E9228D /* LFWatchAppTargetWatchApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LFWatchAppTargetWatchApp.entitlements; sourceTree = "<group>"; };
 		DA33D84329A5128200E9228D /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS9.1.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
 		DA33D84629A5136C00E9228D /* LFHealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFHealthKitManager.swift; sourceTree = "<group>"; };
+		DA6228F129C0CD5D00486619 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		DA6228F329C0CD5D00486619 /* WorkoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutManager.swift; sourceTree = "<group>"; };
+		DA6228F529C0CD5D00486619 /* MetricsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsView.swift; sourceTree = "<group>"; };
+		DA6228F629C0CD5D00486619 /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
+		DA6228F729C0CD5D00486619 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
+		DA6228F829C0CD5D00486619 /* SessionPagingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionPagingView.swift; sourceTree = "<group>"; };
+		DA6228F929C0CD5D00486619 /* ControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlsView.swift; sourceTree = "<group>"; };
+		DA6228FA29C0CD5D00486619 /* ActivityRingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRingsView.swift; sourceTree = "<group>"; };
+		DA6228FB29C0CD5D00486619 /* ElapsedTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElapsedTimeView.swift; sourceTree = "<group>"; };
 		DA8D4868299A9E6B00CBF51C /* LFWatchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LFWatchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA8D486B299A9E6B00CBF51C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA8D486D299A9E6B00CBF51C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +115,28 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		DA6228F229C0CD5D00486619 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DA6228F329C0CD5D00486619 /* WorkoutManager.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		DA6228F429C0CD5D00486619 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DA6228F529C0CD5D00486619 /* MetricsView.swift */,
+				DA6228F629C0CD5D00486619 /* SummaryView.swift */,
+				DA6228F729C0CD5D00486619 /* StartView.swift */,
+				DA6228F829C0CD5D00486619 /* SessionPagingView.swift */,
+				DA6228F929C0CD5D00486619 /* ControlsView.swift */,
+				DA6228FA29C0CD5D00486619 /* ActivityRingsView.swift */,
+				DA6228FB29C0CD5D00486619 /* ElapsedTimeView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		DA8D485F299A9E6B00CBF51C = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +175,9 @@
 		DA8D4884299A9E9300CBF51C /* LFWatchAppTargetWatchApp */ = {
 			isa = PBXGroup;
 			children = (
+				DA6228F129C0CD5D00486619 /* ComplicationController.swift */,
+				DA6228F229C0CD5D00486619 /* Controller */,
+				DA6228F429C0CD5D00486619 /* Views */,
 				DAC1A89E29A5BBAD00857394 /* Info.plist */,
 				DA33D84229A5127000E9228D /* LFWatchAppTargetWatchApp.entitlements */,
 				DA33D84629A5136C00E9228D /* LFHealthKitManager.swift */,
@@ -268,10 +311,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA62290029C0CFAF00486619 /* StartView.swift in Sources */,
 				DAD355DD299BF270003A46BA /* WatchConnectManager.swift in Sources */,
+				DA62290429C0CFB800486619 /* ElapsedTimeView.swift in Sources */,
+				DA6228FE29C0CFAB00486619 /* MetricsView.swift in Sources */,
 				DA8D4888299A9E9300CBF51C /* ContentView.swift in Sources */,
+				DA6228FC29C0CD5D00486619 /* ComplicationController.swift in Sources */,
 				DA33D84729A5136C00E9228D /* LFHealthKitManager.swift in Sources */,
+				DA6228FF29C0CFAD00486619 /* SummaryView.swift in Sources */,
+				DA62290129C0CFB100486619 /* SessionPagingView.swift in Sources */,
 				DA8D4886299A9E9300CBF51C /* LFWatchAppTargetApp.swift in Sources */,
+				DA62290329C0CFB600486619 /* ActivityRingsView.swift in Sources */,
+				DA6228FD29C0CFA800486619 /* WorkoutManager.swift in Sources */,
+				DA62290229C0CFB400486619 /* ControlsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

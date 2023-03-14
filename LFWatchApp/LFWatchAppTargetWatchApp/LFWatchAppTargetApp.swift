@@ -10,9 +10,25 @@ import SwiftUI
 
 @main
 struct LFWatchAppTarget_Watch_AppApp: App {
-    var body: some Scene {
+    
+    @StateObject private var workoutManager = WorkoutManager()
+
+    @SceneBuilder var body: some Scene {
+        WindowGroup {
+            NavigationView {
+                StartView()
+            }
+            .sheet(isPresented: $workoutManager.showingSummaryView) {
+                SummaryView()
+            }
+            .environmentObject(workoutManager)
+        }
+    }
+
+ /*   var body: some Scene {
         WindowGroup {
             ContentView()
         }
-    }
+    } */
+    
 }
