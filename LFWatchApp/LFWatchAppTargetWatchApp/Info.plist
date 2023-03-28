@@ -9,6 +9,8 @@
 	</array>
 	<key>WKAppBundleIdentifier</key>
 	<string>com.lifefitness.lfconnect-Staging.watchkitapp</string>
+	<key>WKApplication</key>
+	<true/>
 	<key>WKBackgroundModes</key>
 	<array>
 		<string>workout-processing</string>

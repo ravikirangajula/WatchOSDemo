@@ -176,10 +176,10 @@ extension ContentView {
             self.iosString = s
         }
         
-        wcManagerObj.startWorkout = {
-            healthKitObject.selectedWorkout = .walking
-            workoutState = "workout started"
-        }
+//        wcManagerObj.startWorkout = {
+//            healthKitObject.selectedWorkout = .walking
+//            workoutState = "workout started"
+//        }
         
         wcManagerObj.endWorkout = {
             healthKitObject.endWorkout()

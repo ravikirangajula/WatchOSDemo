@@ -25,25 +25,20 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func runTap(_ sender: Any) {
+        sharedObj.startWorkoutInAppleWatch(activityType: .run)
+    }
+
+    @IBAction func cycleTap(_ sender: Any) {
+        sharedObj.startWorkoutInAppleWatch(activityType: .bike)
+    }
+    
     @IBAction func tapOnButton(_ sender: Any) {
-           sharedObj.openWatchOSApp()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {[weak self] in
-            self?.sharedObj.send("START WO") { [weak self] outPutString in
-                DispatchQueue.main.async {
-                    self?.titleLabel.text = outPutString
-                }
-            }
-        }
+        sharedObj.startWorkoutInAppleWatch(activityType: .walk)
     }
 
     @IBAction func endWorkout(_ sender: Any) {
-        self.sharedObj.send("END WO") { [weak self] outPutString in
-            DispatchQueue.main.async {
-                self?.titleLabel.text = outPutString
-            }
-        }
-
-        
+        self.sharedObj.endWorkoutInWatchApp()
     }
 }
 

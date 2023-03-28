@@ -1,9 +1,10 @@
-/*
-See LICENSE folder for this sample’s licensing information.
-
-Abstract:
-The paging view to switch between controls, metrics, and now playing views.
-*/
+//
+//  SessionPagingView.swift
+//  LFConnectWatch Watch App
+//
+//  Created by Ravikiran Gajula on 6/3/23.
+//  Copyright © 2023 Life Fitness. All rights reserved.
+//
 
 import SwiftUI
 import WatchKit
@@ -14,13 +15,17 @@ struct SessionPagingView: View {
     @State private var selection: Tab = .metrics
 
     enum Tab {
-        case controls, metrics, nowPlaying
+        case controls, metrics, nowPlaying, graphView
     }
 
     var body: some View {
         TabView(selection: $selection) {
            // ControlsView().tag(Tab.controls)
-            MetricsView().tag(Tab.metrics)
+            if #available(watchOS 9.0, *) {
+                HeartBeatGraphView().tag(Tab.graphView)
+            } else {
+                MetricsView().tag(Tab.metrics)
+            }
            // NowPlayingView().tag(Tab.nowPlaying)
         }
         .navigationTitle(workoutManager.selectedWorkout?.name ?? "")
@@ -37,7 +42,11 @@ struct SessionPagingView: View {
 
     private func displayMetricsView() {
         withAnimation {
-            selection = .metrics
+            if #available(watchOS 9.0, *) {
+                selection = .graphView
+            } else {
+                selection = .metrics
+            }
         }
     }
 }

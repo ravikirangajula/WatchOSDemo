@@ -12,9 +12,6 @@
 		DA6228FC29C0CD5D00486619 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6228F129C0CD5D00486619 /* ComplicationController.swift */; };
 		DA6228FD29C0CFA800486619 /* WorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6228F329C0CD5D00486619 /* WorkoutManager.swift */; };
 		DA6228FE29C0CFAB00486619 /* MetricsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6228F529C0CD5D00486619 /* MetricsView.swift */; };
-		DA6228FF29C0CFAD00486619 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6228F629C0CD5D00486619 /* SummaryView.swift */; };
-		DA62290029C0CFAF00486619 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6228F729C0CD5D00486619 /* StartView.swift */; };
-		DA62290129C0CFB100486619 /* SessionPagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6228F829C0CD5D00486619 /* SessionPagingView.swift */; };
 		DA62290229C0CFB400486619 /* ControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6228F929C0CD5D00486619 /* ControlsView.swift */; };
 		DA62290329C0CFB600486619 /* ActivityRingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6228FA29C0CD5D00486619 /* ActivityRingsView.swift */; };
 		DA62290429C0CFB800486619 /* ElapsedTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6228FB29C0CD5D00486619 /* ElapsedTimeView.swift */; };
@@ -29,6 +26,23 @@
 		DA8D4888299A9E9300CBF51C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D4887299A9E9300CBF51C /* ContentView.swift */; };
 		DA8D488A299A9E9400CBF51C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA8D4889299A9E9400CBF51C /* Assets.xcassets */; };
 		DA8D488D299A9E9400CBF51C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA8D488C299A9E9400CBF51C /* Preview Assets.xcassets */; };
+		DAB1B01129CBFD7F00D6B49D /* ChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB1B01029CBFD7F00D6B49D /* ChartData.swift */; };
+		DAB1B01929CBFDB400D6B49D /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB1B01429CBFDAA00D6B49D /* Person.swift */; };
+		DAB1B01A29CBFDB700D6B49D /* EnergyConsumption.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB1B01529CBFDAA00D6B49D /* EnergyConsumption.swift */; };
+		DAB1B01B29CBFDB900D6B49D /* Sale.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB1B01629CBFDAA00D6B49D /* Sale.swift */; };
+		DAB1B01C29CBFDBB00D6B49D /* Production.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB1B01729CBFDAA00D6B49D /* Production.swift */; };
+		DAB1B02429CD474A00D6B49D /* Phosphate-Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DAB1B01E29CD474300D6B49D /* Phosphate-Solid.ttf */; };
+		DAB1B02529CD474C00D6B49D /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DAB1B01F29CD474300D6B49D /* Roboto-Medium.ttf */; };
+		DAB1B02629CD474F00D6B49D /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DAB1B02029CD474300D6B49D /* Roboto-Regular.ttf */; };
+		DAB1B02729CD475100D6B49D /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DAB1B02129CD474300D6B49D /* Roboto-Italic.ttf */; };
+		DAB1B02929CD475500D6B49D /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DAB1B02329CD474300D6B49D /* Roboto-Thin.ttf */; };
+		DAB1B03029CD585E00D6B49D /* Roboto-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = DAB1B02F29CD585E00D6B49D /* Roboto-Bold.otf */; };
+		DAB1B05429D2B84300D6B49D /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB1B04F29D2B84300D6B49D /* SummaryView.swift */; };
+		DAB1B05529D2B84400D6B49D /* HeartBeatGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB1B05029D2B84300D6B49D /* HeartBeatGraphView.swift */; };
+		DAB1B05729D2B84400D6B49D /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB1B05229D2B84300D6B49D /* StartView.swift */; };
+		DAB1B05829D2B84400D6B49D /* SessionPagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB1B05329D2B84300D6B49D /* SessionPagingView.swift */; };
+		DAB1B05B29D2BA0100D6B49D /* HeartBeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB1B05A29D2BA0100D6B49D /* HeartBeat.swift */; };
+		DAB1B05C29D2BA0100D6B49D /* HeartBeatDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB1B05929D2BA0100D6B49D /* HeartBeatDetails.swift */; };
 		DAD355DC299BF270003A46BA /* WatchConnectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD355DB299BF270003A46BA /* WatchConnectManager.swift */; };
 		DAD355DD299BF270003A46BA /* WatchConnectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD355DB299BF270003A46BA /* WatchConnectManager.swift */; };
 /* End PBXBuildFile section */
@@ -64,9 +78,6 @@
 		DA6228F129C0CD5D00486619 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
 		DA6228F329C0CD5D00486619 /* WorkoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutManager.swift; sourceTree = "<group>"; };
 		DA6228F529C0CD5D00486619 /* MetricsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsView.swift; sourceTree = "<group>"; };
-		DA6228F629C0CD5D00486619 /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
-		DA6228F729C0CD5D00486619 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
-		DA6228F829C0CD5D00486619 /* SessionPagingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionPagingView.swift; sourceTree = "<group>"; };
 		DA6228F929C0CD5D00486619 /* ControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlsView.swift; sourceTree = "<group>"; };
 		DA6228FA29C0CD5D00486619 /* ActivityRingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRingsView.swift; sourceTree = "<group>"; };
 		DA6228FB29C0CD5D00486619 /* ElapsedTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElapsedTimeView.swift; sourceTree = "<group>"; };
@@ -83,6 +94,23 @@
 		DA8D4887299A9E9300CBF51C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DA8D4889299A9E9400CBF51C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA8D488C299A9E9400CBF51C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		DAB1B01029CBFD7F00D6B49D /* ChartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartData.swift; sourceTree = "<group>"; };
+		DAB1B01429CBFDAA00D6B49D /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		DAB1B01529CBFDAA00D6B49D /* EnergyConsumption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnergyConsumption.swift; sourceTree = "<group>"; };
+		DAB1B01629CBFDAA00D6B49D /* Sale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sale.swift; sourceTree = "<group>"; };
+		DAB1B01729CBFDAA00D6B49D /* Production.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Production.swift; sourceTree = "<group>"; };
+		DAB1B01E29CD474300D6B49D /* Phosphate-Solid.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Phosphate-Solid.ttf"; sourceTree = "<group>"; };
+		DAB1B01F29CD474300D6B49D /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		DAB1B02029CD474300D6B49D /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		DAB1B02129CD474300D6B49D /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Italic.ttf"; sourceTree = "<group>"; };
+		DAB1B02329CD474300D6B49D /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
+		DAB1B02F29CD585E00D6B49D /* Roboto-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.otf"; sourceTree = "<group>"; };
+		DAB1B04F29D2B84300D6B49D /* SummaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
+		DAB1B05029D2B84300D6B49D /* HeartBeatGraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartBeatGraphView.swift; sourceTree = "<group>"; };
+		DAB1B05229D2B84300D6B49D /* StartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
+		DAB1B05329D2B84300D6B49D /* SessionPagingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionPagingView.swift; sourceTree = "<group>"; };
+		DAB1B05929D2BA0100D6B49D /* HeartBeatDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartBeatDetails.swift; sourceTree = "<group>"; };
+		DAB1B05A29D2BA0100D6B49D /* HeartBeat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartBeat.swift; sourceTree = "<group>"; };
 		DAC1A89E29A5BBAD00857394 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DAC1A89F29A6177500857394 /* LFWatchApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LFWatchApp.entitlements; sourceTree = "<group>"; };
 		DAD355DB299BF270003A46BA /* WatchConnectManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectManager.swift; sourceTree = "<group>"; };
@@ -126,10 +154,11 @@
 		DA6228F429C0CD5D00486619 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DAB1B05029D2B84300D6B49D /* HeartBeatGraphView.swift */,
 				DA6228F529C0CD5D00486619 /* MetricsView.swift */,
-				DA6228F629C0CD5D00486619 /* SummaryView.swift */,
-				DA6228F729C0CD5D00486619 /* StartView.swift */,
-				DA6228F829C0CD5D00486619 /* SessionPagingView.swift */,
+				DAB1B04F29D2B84300D6B49D /* SummaryView.swift */,
+				DAB1B05229D2B84300D6B49D /* StartView.swift */,
+				DAB1B05329D2B84300D6B49D /* SessionPagingView.swift */,
 				DA6228F929C0CD5D00486619 /* ControlsView.swift */,
 				DA6228FA29C0CD5D00486619 /* ActivityRingsView.swift */,
 				DA6228FB29C0CD5D00486619 /* ElapsedTimeView.swift */,
@@ -175,6 +204,9 @@
 		DA8D4884299A9E9300CBF51C /* LFWatchAppTargetWatchApp */ = {
 			isa = PBXGroup;
 			children = (
+				DAB1B01D29CD474300D6B49D /* Fonts */,
+				DAB1B01229CBFDAA00D6B49D /* Models */,
+				DAB1B01029CBFD7F00D6B49D /* ChartData.swift */,
 				DA6228F129C0CD5D00486619 /* ComplicationController.swift */,
 				DA6228F229C0CD5D00486619 /* Controller */,
 				DA6228F429C0CD5D00486619 /* Views */,
@@ -195,6 +227,32 @@
 				DA8D488C299A9E9400CBF51C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DAB1B01229CBFDAA00D6B49D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DAB1B05A29D2BA0100D6B49D /* HeartBeat.swift */,
+				DAB1B05929D2BA0100D6B49D /* HeartBeatDetails.swift */,
+				DAB1B01429CBFDAA00D6B49D /* Person.swift */,
+				DAB1B01529CBFDAA00D6B49D /* EnergyConsumption.swift */,
+				DAB1B01629CBFDAA00D6B49D /* Sale.swift */,
+				DAB1B01729CBFDAA00D6B49D /* Production.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DAB1B01D29CD474300D6B49D /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				DAB1B02F29CD585E00D6B49D /* Roboto-Bold.otf */,
+				DAB1B01E29CD474300D6B49D /* Phosphate-Solid.ttf */,
+				DAB1B01F29CD474300D6B49D /* Roboto-Medium.ttf */,
+				DAB1B02029CD474300D6B49D /* Roboto-Regular.ttf */,
+				DAB1B02129CD474300D6B49D /* Roboto-Italic.ttf */,
+				DAB1B02329CD474300D6B49D /* Roboto-Thin.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -288,7 +346,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAB1B02929CD475500D6B49D /* Roboto-Thin.ttf in Resources */,
+				DAB1B03029CD585E00D6B49D /* Roboto-Bold.otf in Resources */,
+				DAB1B02529CD474C00D6B49D /* Roboto-Medium.ttf in Resources */,
+				DAB1B02729CD475100D6B49D /* Roboto-Italic.ttf in Resources */,
 				DA8D488D299A9E9400CBF51C /* Preview Assets.xcassets in Resources */,
+				DAB1B02629CD474F00D6B49D /* Roboto-Regular.ttf in Resources */,
+				DAB1B02429CD474A00D6B49D /* Phosphate-Solid.ttf in Resources */,
 				DA8D488A299A9E9400CBF51C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -311,19 +375,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA62290029C0CFAF00486619 /* StartView.swift in Sources */,
 				DAD355DD299BF270003A46BA /* WatchConnectManager.swift in Sources */,
+				DAB1B01C29CBFDBB00D6B49D /* Production.swift in Sources */,
 				DA62290429C0CFB800486619 /* ElapsedTimeView.swift in Sources */,
 				DA6228FE29C0CFAB00486619 /* MetricsView.swift in Sources */,
+				DAB1B01129CBFD7F00D6B49D /* ChartData.swift in Sources */,
 				DA8D4888299A9E9300CBF51C /* ContentView.swift in Sources */,
 				DA6228FC29C0CD5D00486619 /* ComplicationController.swift in Sources */,
+				DAB1B05729D2B84400D6B49D /* StartView.swift in Sources */,
 				DA33D84729A5136C00E9228D /* LFHealthKitManager.swift in Sources */,
-				DA6228FF29C0CFAD00486619 /* SummaryView.swift in Sources */,
-				DA62290129C0CFB100486619 /* SessionPagingView.swift in Sources */,
+				DAB1B01B29CBFDB900D6B49D /* Sale.swift in Sources */,
 				DA8D4886299A9E9300CBF51C /* LFWatchAppTargetApp.swift in Sources */,
+				DAB1B01A29CBFDB700D6B49D /* EnergyConsumption.swift in Sources */,
+				DAB1B05C29D2BA0100D6B49D /* HeartBeatDetails.swift in Sources */,
 				DA62290329C0CFB600486619 /* ActivityRingsView.swift in Sources */,
 				DA6228FD29C0CFA800486619 /* WorkoutManager.swift in Sources */,
+				DAB1B05B29D2BA0100D6B49D /* HeartBeat.swift in Sources */,
 				DA62290229C0CFB400486619 /* ControlsView.swift in Sources */,
+				DAB1B05429D2B84300D6B49D /* SummaryView.swift in Sources */,
+				DAB1B05529D2B84400D6B49D /* HeartBeatGraphView.swift in Sources */,
+				DAB1B01929CBFDB400D6B49D /* Person.swift in Sources */,
+				DAB1B05829D2B84400D6B49D /* SessionPagingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -564,7 +636,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 8.7;
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
 			};
 			name = Debug;
 		};
@@ -601,7 +673,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 8.7;
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
 			};
 			name = Release;
 		};

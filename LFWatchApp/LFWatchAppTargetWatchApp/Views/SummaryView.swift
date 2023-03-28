@@ -1,10 +1,10 @@
-/*
-See LICENSE folder for this sample’s licensing information.
-
-Abstract:
-The workout summary view.
-*/
-
+//
+//  SummaryView.swift
+//  LFConnectWatch Watch App
+//
+//  Created by Ravikiran Gajula on 6/3/23.
+//  Copyright © 2023 Life Fitness. All rights reserved.
+//
 import Foundation
 import HealthKit
 import SwiftUI

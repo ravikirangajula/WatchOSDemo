@@ -10,7 +10,7 @@ import SwiftUI
 
 @main
 struct LFWatchAppTarget_Watch_AppApp: App {
-    
+    //@WKExtensionDelegateAdaptor(ExtensionDelegate.self) var extensionDelegate
     @StateObject private var workoutManager = WorkoutManager()
 
     @SceneBuilder var body: some Scene {
